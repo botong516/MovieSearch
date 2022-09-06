@@ -17,5 +17,4 @@ public class IndexController {
         SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "CurrentUserID:" + sysUserEntity.getUserId();
     }
-
 }

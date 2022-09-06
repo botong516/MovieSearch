@@ -13,15 +13,19 @@ import javax.persistence.*;
 public class MovieEntity {
 
     @Id
-    @Column(name = "id" )
+    @Column(name = "movieId")
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-
     private String name;
+
+    @Column(name = "user")
+    private String username;
 
     public String getName() {
         return name;
     }
+
+    public String getUsername() { return username; }
 
     @Override
     public String toString() {

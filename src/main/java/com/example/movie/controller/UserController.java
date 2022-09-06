@@ -18,14 +18,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-
-    @PostMapping("/register")
-    public String Register(@RequestBody UserDto userDto, BindingResult bindingResult) {
+    @PostMapping("/wanttowatch")
+    public String WantToWatch(@RequestBody MovieEntity movie, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();
         }
-        return userService.Register();
+        return userService.WantToWatch(movie);
+    }
+
+    @PostMapping("/watched")
+    public String Watched(@RequestBody MovieEntity movie, BindingResult bindingResult) {
+        for (ObjectError error : bindingResult.getAllErrors()) {
+            return error.getDefaultMessage();
+        }
+        return userService.Watched(movie);
     }
 
     @PostMapping("/like")
@@ -33,15 +39,14 @@ public class UserController {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();
         }
-        return userService.Like();
+        return userService.Like(movie);
     }
 
-
-    @PostMapping("/favorites")
-    public String Favorites(@RequestBody MovieEntity movie, BindingResult bindingResult) {
+    @PostMapping("/unlike")
+    public String Unlike(@RequestBody MovieEntity movie, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();
         }
-        return userService.Favorites();
+        return userService.Unlike(movie);
     }
 }

@@ -7,9 +7,9 @@ import java.util.Map;
 
 @Service
 public class MovieService {
-    public String AddMovie() {
-        return "success";
-    }
+//    public String AddMovie() {
+//        return "success";
+//    }
 
     // TODO Search IMDb’s API
     public Object Search(int limit, int offset) {
