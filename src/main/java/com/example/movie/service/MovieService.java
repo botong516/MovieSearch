@@ -36,7 +36,7 @@ public class MovieService {
 
     public SearchMovieResp Search(String keyword) {
         HttpEntity<Resource> httpEntity = getResourceHttpEntity();
-        String url = SEARCH+ keyword;
+        String url = SEARCH + keyword;
         ResponseEntity<SearchMovieResp> response = restTemplate.exchange(url, HttpMethod.GET,
                 httpEntity, SearchMovieResp.class);
         return response.getBody();

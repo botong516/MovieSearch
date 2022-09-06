@@ -22,7 +22,7 @@ public class MovieController {
         return  movieService.Search(keyword);
     }
 
-    @GetMapping("/mostpopula")
+    @GetMapping("/mostpopular")
     @ResponseBody
     public Object MostPopular() {
         return  movieService.MostPopular();

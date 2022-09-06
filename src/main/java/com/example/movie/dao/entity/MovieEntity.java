@@ -27,5 +27,5 @@ public class MovieEntity {
     private int isWantToWatch;
 
     @Column()
-    private int islike;
+    private int isLike;
 }
