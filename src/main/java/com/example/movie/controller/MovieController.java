@@ -10,23 +10,22 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-//    @PostMapping("")
-//    public String AddMovie(@RequestBody MovieEntity movie, BindingResult bindingResult) {
-//        for (ObjectError error : bindingResult.getAllErrors()) {
-//            return error.getDefaultMessage();
-//        }
-//        System.out.println(movie.getName());
-//        return movieService.AddMovie();
-//    }
+    @GetMapping("/top250")
+    @ResponseBody
+    public Object Top250Movies() {
+        return  movieService.Top250Movies();
+    }
 
     @GetMapping("/search")
+    @ResponseBody
     public Object Search(String keyword) {
         return  movieService.Search(keyword);
     }
 
-    @GetMapping("/meilisearch")
-    public Object Meilisearch(String keyword) {
-        return  movieService.Search(keyword);
+    @GetMapping("/mostpopula")
+    @ResponseBody
+    public Object MostPopular() {
+        return  movieService.MostPopular();
     }
 }
 

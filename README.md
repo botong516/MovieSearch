@@ -14,8 +14,16 @@ mysql -h 127.0.0.1 -P 63306 -u root -p123456
 
 create database movie;
 
-# Login（现在还是假登陆）
-http://localhost:8080/hello ,跳转登陆页 U: botong P: 123456
+# Login
+需要在User表写入一条记录，比如 U: botong P: 123456
+http://localhost:8080/hello ,跳转登陆页。
+
+# URL
+Movie Top250：http://127.0.0.1:8080/api/v1/movie/top250
+Movie Search：http://127.0.0.1:8080/api/v1/movie/search
+Movie mostpopula：http://127.0.0.1:8080/api/v1/movie/mostpopula
+
+
 
 
 
