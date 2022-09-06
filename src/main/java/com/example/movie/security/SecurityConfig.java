@@ -22,18 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("botong")
-                .password("123456").roles("admin");
-//         TODO 修改自定义查询数据库
-//        auth.userDetailsService(sysUserDetailsService)
-//                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(sysUserDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // TODO 后续放开密码加密
-        // return new BCryptPasswordEncoder();
+//         return new BCryptPasswordEncoder();
         return NoOpPasswordEncoder.getInstance();
     }
 
