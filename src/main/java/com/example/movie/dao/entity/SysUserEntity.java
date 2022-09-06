@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -18,17 +17,13 @@ public class SysUserEntity implements UserDetails {
     private static final long serialVersionUID = 4522943071576672084L;
 
     @Id
-    @Column(name = "id" )
+    @Column()
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long userId;
+    private Long id;
 
     private String username;
     private String password;
 
-    public SysUserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,6 +1,7 @@
 package com.example.movie.controller;
 
 import com.example.movie.dao.entity.MovieEntity;
+import com.example.movie.model.MovieReq;
 import com.example.movie.model.UserDto;
 import com.example.movie.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,34 +20,20 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/wanttowatch")
-    public String WantToWatch(@RequestBody MovieEntity movie, BindingResult bindingResult) {
+    public String WantToWatch(@RequestBody MovieReq movie, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();
         }
         return userService.WantToWatch(movie);
     }
 
-    @PostMapping("/watched")
-    public String Watched(@RequestBody MovieEntity movie, BindingResult bindingResult) {
-        for (ObjectError error : bindingResult.getAllErrors()) {
-            return error.getDefaultMessage();
-        }
-        return userService.Watched(movie);
-    }
 
     @PostMapping("/like")
-    public String Like(@RequestBody MovieEntity movie, BindingResult bindingResult) {
+    public String Like(@RequestBody MovieReq movie, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();
         }
         return userService.Like(movie);
     }
 
-    @PostMapping("/unlike")
-    public String Unlike(@RequestBody MovieEntity movie, BindingResult bindingResult) {
-        for (ObjectError error : bindingResult.getAllErrors()) {
-            return error.getDefaultMessage();
-        }
-        return userService.Unlike(movie);
-    }
 }

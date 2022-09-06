@@ -1,10 +1,7 @@
 package com.example.movie.controller;
 
-import com.example.movie.dao.entity.MovieEntity;
 import com.example.movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,9 +20,13 @@ public class MovieController {
 //    }
 
     @GetMapping("/search")
-    public Object Search(@RequestParam(defaultValue = "0", name="limit") int limit,
-                         @RequestParam(defaultValue = "0", name="offset") int offset) {
-        return  movieService.Search(limit,offset);
+    public Object Search(String keyword) {
+        return  movieService.Search(keyword);
+    }
+
+    @GetMapping("/meilisearch")
+    public Object Meilisearch(String keyword) {
+        return  movieService.Search(keyword);
     }
 }
 

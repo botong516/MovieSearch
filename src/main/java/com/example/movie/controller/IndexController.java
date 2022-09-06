@@ -15,6 +15,6 @@ public class IndexController {
     @GetMapping("/hello")
     public Object SayHello(){
         SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "CurrentUserID:" + sysUserEntity.getUserId();
+        return "CurrentUserID:" + sysUserEntity.getId();
     }
 }

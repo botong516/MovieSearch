@@ -13,24 +13,19 @@ import javax.persistence.*;
 public class MovieEntity {
 
     @Id
-    @Column(name = "movieId")
+    @Column()
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private String name;
 
-    @Column(name = "user")
-    private String username;
+    @Column()
+    private Long userID;
 
-    public String getName() {
-        return name;
-    }
+    @Column()
+    private String movieID;
 
-    public String getUsername() { return username; }
+    @Column()
+    private int isWantToWatch;
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "name='" + name + '\'' +
-                '}';
-    }
+    @Column()
+    private int islike;
 }
