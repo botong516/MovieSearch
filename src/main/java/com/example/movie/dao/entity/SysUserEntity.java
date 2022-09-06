@@ -25,6 +25,10 @@ public class SysUserEntity implements UserDetails {
     private String username;
     private String password;
 
+    public SysUserEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

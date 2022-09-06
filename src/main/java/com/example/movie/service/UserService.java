@@ -34,7 +34,7 @@ public class UserService {
             }
         }
 
-        SysUserEntity newUser = new SysUserEntity();
+        SysUserEntity newUser = new SysUserEntity(regiDto.getName(), regiDto.getPassword1());
         userRepository.save(newUser);
 
         MovieListEntity movieList = new MovieListEntity();
