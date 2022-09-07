@@ -32,7 +32,7 @@ public class MovieController {
     @GetMapping("/{id}")
     @ResponseBody
     public Object MovieDetail(@PathVariable(name = "id") String id) {
-        return movieService.MovieDetail();
+        return movieService.MovieDetail(id);
     }
 }
 

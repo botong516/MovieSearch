@@ -8,6 +8,7 @@ import com.example.movie.enums.LikeStatus;
 import com.example.movie.enums.WatchStatus;
 import com.example.movie.model.Favorite;
 import com.example.movie.model.MovieReq;
+import com.example.movie.model.MovieTrailer;
 import com.example.movie.model.RegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @Service
 public class UserService {
+
+    @Autowired
+    private MovieService movieService;
 
     @Autowired
     private UserRepository userRepository;
@@ -57,6 +61,7 @@ public class UserService {
             want = new MovieEntity();
             want.setUserID(currentUserID);
             want.setMovieID(movie.getMovieID());
+            SetMovieEntity(want, movie.getMovieID());
         }
         want.setIsWantToWatch(movie.getWantToWatch().getCode());
         movieRepository.save(want);
@@ -76,10 +81,43 @@ public class UserService {
             like = new MovieEntity();
             like.setUserID(currentUserID);
             like.setMovieID(movie.getMovieID());
+            SetMovieEntity(like, movie.getMovieID());
         }
         like.setIslike(movie.getLike().getCode());
         movieRepository.save(like);
         return like.getMovieID();
+    }
+
+
+    public void SetMovieEntity(MovieEntity movieEntity, String movieID) {
+        MovieTrailer  movieTrailer  = movieService.Trailer(movieID);
+        if (movieEntity == null || movieEntity.getId() == 0) {
+            return;
+        }
+        if (movieTrailer.getTitle() != "") {
+            movieEntity.setTitle(movieTrailer.getTitle());
+        }
+        if (movieTrailer.getFullTitle() != "") {
+            movieEntity.setFullTitle(movieTrailer.getFullTitle());
+        }
+        if (movieTrailer.getType() != "") {
+            movieEntity.setType(movieTrailer.getType());
+        }
+        if (movieTrailer.getYear() != "") {
+            movieEntity.setYear(movieTrailer.getYear());
+        }
+        if (movieTrailer.getVideoDescription() != "") {
+            movieEntity.setVideoDescription(movieTrailer.getVideoDescription());
+        }
+        if (movieTrailer.getVideoTitle() != "") {
+            movieEntity.setVideoTitle(movieTrailer.getVideoTitle());
+        }
+        if (movieTrailer.getThumbnailUrl() != "") {
+            movieEntity.setThumbnailUrl(movieTrailer.getThumbnailUrl());
+        }
+        if (movieTrailer.getLink() != "") {
+            movieEntity.setLink(movieTrailer.getLink());
+        }
     }
 
 
