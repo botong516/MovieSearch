@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<MovieEntity,Long> {
     MovieEntity findByUserIDAndMovieID(Long userID, String movieID);
+
+    List<MovieEntity> findByUserID(Long userID);
 }

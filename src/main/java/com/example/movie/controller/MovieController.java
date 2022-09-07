@@ -27,5 +27,12 @@ public class MovieController {
     public Object MostPopular() {
         return  movieService.MostPopular();
     }
+
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Object MovieDetail(@PathVariable(name = "id") String id) {
+        return movieService.MovieDetail();
+    }
 }
 

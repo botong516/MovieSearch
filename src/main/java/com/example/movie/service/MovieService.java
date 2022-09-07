@@ -1,5 +1,6 @@
 package com.example.movie.service;
 
+import com.example.movie.model.MovieDetail;
 import com.example.movie.model.SearchMovieResp;
 import com.example.movie.model.TopMoviesResp;
 import com.mysql.cj.protocol.x.Notice;
@@ -46,6 +47,14 @@ public class MovieService {
         HttpEntity<Resource> httpEntity = getResourceHttpEntity();
         ResponseEntity<TopMoviesResp> response = restTemplate.exchange(MOSTPOPULAR, HttpMethod.GET,
                 httpEntity, TopMoviesResp.class);
+        return response.getBody();
+    }
+
+
+    public MovieDetail MovieDetail() {
+        HttpEntity<Resource> httpEntity = getResourceHttpEntity();
+        ResponseEntity<MovieDetail> response = restTemplate.exchange(MOVIEDETAIL, HttpMethod.GET,
+                httpEntity, MovieDetail.class);
         return response.getBody();
     }
 

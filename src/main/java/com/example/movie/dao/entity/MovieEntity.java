@@ -24,8 +24,24 @@ public class MovieEntity {
     private String movieID;
 
     @Column()
+    private String movieName;
+
+    @Column()
+    private String movieDesc;
+
+    @Column()
     private int isWantToWatch;
 
     @Column()
-    private int isLike;
+    private int islike;
+
+    @Column()
+    private String movieImg;
+
+    @Column()
+    private String createTime;
+
+    @Column()
+    private String updateTime;
+
 }
