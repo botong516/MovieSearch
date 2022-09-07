@@ -4,12 +4,16 @@ import com.example.movie.dao.MovieRepository;
 import com.example.movie.dao.UserRepository;
 import com.example.movie.dao.entity.MovieEntity;
 import com.example.movie.dao.entity.SysUserEntity;
+import com.example.movie.enums.LikeStatus;
+import com.example.movie.enums.WatchStatus;
+import com.example.movie.model.Favorite;
 import com.example.movie.model.MovieReq;
 import com.example.movie.model.RegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,7 +37,6 @@ public class UserService {
                 return "password inconsistent";
             }
         }
-
         SysUserEntity newUser = new SysUserEntity();
         newUser.setPassword(regiDto.getPassword1());
         newUser.setUsername(regiDto.getName());
@@ -46,6 +49,9 @@ public class UserService {
     public String WantToWatch(MovieReq movie) {
         SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long currentUserID = sysUserEntity.getId();
+        if (currentUserID == 0) {
+            return null;
+        }
         MovieEntity want = movieRepository.findByUserIDAndMovieID(currentUserID, movie.getMovieID());
         if (want == null) {
             want = new MovieEntity();
@@ -62,7 +68,10 @@ public class UserService {
     public String Like(MovieReq movie) {
         SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long currentUserID = sysUserEntity.getId();
-        MovieEntity like = movieRepository.findByUserIDAndMovieID(sysUserEntity.getId(), movie.getMovieID());
+        if (currentUserID == 0) {
+            return null;
+        }
+        MovieEntity like = movieRepository.findByUserIDAndMovieID(currentUserID, movie.getMovieID());
         if (like == null) {
             like = new MovieEntity();
             like.setUserID(currentUserID);
@@ -73,4 +82,31 @@ public class UserService {
         return like.getMovieID();
     }
 
+
+    // 调repo存数据库
+    public Favorite Favorite() {
+        Favorite favorite = new Favorite();
+        SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long currentUserID = sysUserEntity.getId();
+        if (currentUserID == 0) {
+            return favorite;
+        }
+        List<MovieEntity> favorites = movieRepository.findByUserID(currentUserID);
+        if (favorites == null || favorites.size() ==0) {
+            return favorite;
+        }
+        List<MovieEntity> likeList = new ArrayList<>();
+        List<MovieEntity> wantToList = new ArrayList<>();
+        for( MovieEntity movieEntity : favorites) {
+            if (movieEntity.getIslike() == LikeStatus.like.getCode()) {
+                likeList.add(movieEntity);
+            }
+            if (movieEntity.getIsWantToWatch() == WatchStatus.wanttowatch.getCode()) {
+                wantToList.add(movieEntity);
+            }
+        }
+        favorite.setLikeList(likeList);
+        favorite.setWantToList(wantToList);
+        return favorite;
+    }
 }

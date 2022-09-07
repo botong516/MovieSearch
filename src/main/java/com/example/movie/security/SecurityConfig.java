@@ -27,12 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().permitAll().
-                and().logout().permitAll()
-                .and().csrf().disable();
-    }
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().anyRequest().permitAll().
+//                and().logout().permitAll()
+//                .and().csrf().disable();
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
