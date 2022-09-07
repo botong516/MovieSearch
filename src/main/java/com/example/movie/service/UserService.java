@@ -68,7 +68,7 @@ public class UserService {
             like.setUserID(currentUserID);
             like.setMovieID(movie.getMovieID());
         }
-        like.setIsLike(movie.getLike().getCode());
+        like.setIslike(movie.getLike().getCode());
         movieRepository.save(like);
         return like.getMovieID();
     }
