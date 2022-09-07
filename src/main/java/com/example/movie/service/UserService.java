@@ -91,7 +91,7 @@ public class UserService {
 
     public void SetMovieEntity(MovieEntity movieEntity, String movieID) {
         MovieTrailer  movieTrailer  = movieService.Trailer(movieID);
-        if (movieEntity == null || movieEntity.getId() == 0) {
+        if (movieTrailer == null || movieTrailer.getImDbId() == "") {
             return;
         }
         if (movieTrailer.getTitle() != "") {

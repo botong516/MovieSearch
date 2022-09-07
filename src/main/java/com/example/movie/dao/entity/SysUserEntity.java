@@ -1,11 +1,14 @@
 package com.example.movie.dao.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,7 +26,6 @@ public class SysUserEntity implements UserDetails {
 
     private String username;
     private String password;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

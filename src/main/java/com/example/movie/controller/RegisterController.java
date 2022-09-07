@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "api/v1/register")
+@RequestMapping(path = "register")
 public class RegisterController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("")
     public String Register(@RequestBody RegisterDto regiDto, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
             return error.getDefaultMessage();

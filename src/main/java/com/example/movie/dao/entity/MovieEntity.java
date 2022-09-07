@@ -2,9 +2,12 @@ package com.example.movie.dao.entity;
 
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "movie")
@@ -56,10 +59,12 @@ public class MovieEntity {
     @Column()
     private String link;
 
-    @Column()
-    private String createTime;
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createTime;
 
-    @Column()
-    private String updateTime;
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime updateTime;
 
 }
