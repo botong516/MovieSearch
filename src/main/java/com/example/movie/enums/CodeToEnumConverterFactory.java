@@ -6,12 +6,12 @@ import org.springframework.core.convert.converter.ConverterFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CodeToEnumConverterFactory implements ConverterFactory<String, BaseEnum> {
+public class CodeToEnumConverterFactory implements ConverterFactory<Integer, BaseEnum> {
     private static final Map<Class, Converter> CONVERTERS = new HashMap<>();
 
     @Override
-    public <T extends BaseEnum> Converter<String, T> getConverter(Class<T> targetType) {
-        Converter<String, T> converter = CONVERTERS.get(targetType);
+    public <T extends BaseEnum> Converter<Integer, T> getConverter(Class<T> targetType) {
+        Converter<Integer, T> converter = CONVERTERS.get(targetType);
         if (converter == null) {
             converter = new IntegerToEnumConverter<>(targetType);
             CONVERTERS.put(targetType, converter);

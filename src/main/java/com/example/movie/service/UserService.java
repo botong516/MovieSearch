@@ -51,8 +51,7 @@ public class UserService {
     // 调repo存数据库
     // Delete from Watched List
     public String WantToWatch(MovieReq movie) {
-        SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long currentUserID = sysUserEntity.getId();
+        Long currentUserID = GetCurrentUserID();
         if (currentUserID == 0) {
             return null;
         }
@@ -71,8 +70,7 @@ public class UserService {
 
     // 调repo存数据库
     public String Like(MovieReq movie) {
-        SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long currentUserID = sysUserEntity.getId();
+        Long currentUserID = GetCurrentUserID();
         if (currentUserID == 0) {
             return null;
         }
@@ -124,8 +122,8 @@ public class UserService {
     // 调repo存数据库
     public Favorite Favorite() {
         Favorite favorite = new Favorite();
-        SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long currentUserID = sysUserEntity.getId();
+        Long currentUserID = GetCurrentUserID();
+
         if (currentUserID == 0) {
             return favorite;
         }
@@ -146,5 +144,16 @@ public class UserService {
         favorite.setLikeList(likeList);
         favorite.setWantToList(wantToList);
         return favorite;
+    }
+
+    private static Long GetCurrentUserID() {
+        Long currentUserID;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof String) {
+            currentUserID = Long.valueOf(SecurityContextHolder.getContext().getAuthentication().hashCode());
+        } else  {
+            SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUserID = sysUserEntity.getId();
+        }
+        return currentUserID;
     }
 }

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class IntegerToEnumConverter<T extends BaseEnum> implements Converter<String, T> {
+public class IntegerToEnumConverter<T extends BaseEnum> implements Converter<Integer, T> {
     private Map<Integer, T> enumMap = new HashMap<>();
 
     public IntegerToEnumConverter(Class<T> enumType) {
@@ -18,7 +18,7 @@ public class IntegerToEnumConverter<T extends BaseEnum> implements Converter<Str
     }
 
     @Override
-    public T convert(String source) {
+    public T convert(Integer source) {
         T t = enumMap.get(source);
         if (Objects.isNull(t)) {
             throw new IllegalArgumentException("无法匹配对应的枚举类型");
