@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/api/v1/**").authenticated()
+//                .antMatchers("/api/v1/**").authenticated().and().csrf().disable().cors()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/register").permitAll()
@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://localhost", "https://127.0.0.1:8080"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8000"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST"));
         corsConfiguration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
