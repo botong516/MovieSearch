@@ -3,6 +3,7 @@ package com.example.movie.service;
 import com.example.movie.dao.UserRepository;
 import com.example.movie.dao.entity.SysUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,8 +16,11 @@ public class SysUserDetailsService implements UserDetailsService {
     private UserRepository userRepository; //user表
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws AuthenticationException {
         SysUserEntity user = userRepository.getByUsername(username);
-        return user == null ? new SysUserEntity() : user;
+        if (user == null) {
+            throw new UsernameNotFoundException("login require");
+        }
+        return user;
     }
 }

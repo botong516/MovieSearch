@@ -4,8 +4,6 @@ import com.example.movie.model.MovieDetail;
 import com.example.movie.model.MovieTrailer;
 import com.example.movie.model.SearchMovieResp;
 import com.example.movie.model.TopMoviesResp;
-import com.mysql.cj.protocol.x.Notice;
-import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -15,10 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.HashMap;
 
 import static com.example.movie.constant.IMDBConstant.*;
