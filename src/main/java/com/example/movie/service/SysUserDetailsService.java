@@ -17,7 +17,7 @@ public class SysUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws AuthenticationException {
-        SysUserEntity user = userRepository.getByUsername(username);
+        SysUserEntity user = userRepository.findFirstByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("login require");
         }
