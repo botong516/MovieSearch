@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping(path = "register")
 public class RegisterController {
@@ -19,10 +21,7 @@ public class RegisterController {
     private UserService userService;
 
     @PostMapping("")
-    public String Register(@RequestBody RegisterDto regiDto, BindingResult bindingResult) {
-        for (ObjectError error : bindingResult.getAllErrors()) {
-            return error.getDefaultMessage();
-        }
-        return userService.Register(regiDto);
+    public String Register(@RequestBody RegisterDto regiDto, HttpServletResponse response) {
+        return userService.Register(response, regiDto);
     }
 }

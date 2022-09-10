@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,18 +34,15 @@ public class UserService {
     // If existent username or password inconsistent, return error message
     // If register successed, add row for the user in movie list
     // and go back to log in web page (Not sure how to do)
-    public String Register(RegisterDto regiDto) {
-        List<SysUserEntity> users = userRepository.findByUsername(regiDto.getName());
+    public String Register(HttpServletResponse response, RegisterDto regiDto) {
+        List<SysUserEntity> users = userRepository.findByUsername(regiDto.getUsername());
         if (users!= null && users.size() > 0) {
+            response.setStatus(400);
             return "username occupied";
-        } else {
-            if (regiDto.getPassword1() != regiDto.getPassword2()) {
-                return "password inconsistent";
-            }
         }
         SysUserEntity newUser = new SysUserEntity();
-        newUser.setPassword(regiDto.getPassword1());
-        newUser.setUsername(regiDto.getName());
+        newUser.setPassword(regiDto.getPassword());
+        newUser.setUsername(regiDto.getUsername());
         userRepository.save(newUser);
         return "registered success";
     }
@@ -146,14 +145,14 @@ public class UserService {
         return favorite;
     }
 
-    private static Long GetCurrentUserID() {
-        Long currentUserID;
+    private Long GetCurrentUserID() {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof String) {
-            currentUserID = Long.valueOf(SecurityContextHolder.getContext().getAuthentication().hashCode());
-        } else  {
-            SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            currentUserID = sysUserEntity.getId();
+            String userName = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            SysUserEntity sysUserEntity = userRepository.findFirstByUsername(userName);
+            if (sysUserEntity != null ) {
+                return  sysUserEntity.getId();
+            }
         }
-        return currentUserID;
+        return Long.valueOf(0);
     }
 }

@@ -50,7 +50,8 @@ public class MovieEntity {
     @Column()
     private String videoTitle;
 
-    @Column()
+    @Lob
+    @Column(columnDefinition="TEXT")
     private String videoDescription;
 
     @Column()
