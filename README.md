@@ -1,30 +1,38 @@
-# MovieSearch
-Movie Search Project
+# MovieBook (Backend part)
+This is the back-end repository for the web application MovieBook! 
 
+The website is a movie log book for users to search and browse movie information, like and track the movies they've watched, and saved movies they want to watch later. Users could get access to the full and real movie library from IMDb including the TOP 250 popular movie list, movie description, director and cast imforamtion, film posters and stills, and the real rating information by millions of reviewers on IMDb! 
 
-# 环境搭建：（本来采用docker-composed 方式搭建，想了想就一个 mysql 依赖，没太大必要，如果后续有多个依赖，可以加入）
-# 安装Docker:
-https://docs.docker.com/desktop/install/mac-install/
+## Features covered by the project
+## Frontend:
+- Components
+- Mobile responsiveness
 
-# 运行docker
-docker run -p 63306:3306 -e MYSQL_ROOT_PASSWORD=123456 --name mysql_movie -d mysql
+## Backend:
+- User registration and login
+- API calls
+- Integration with database
+- Classes and objects
 
-# login Mysql:
-mysql -h 127.0.0.1 -P 63306 -u root -p123456
+## Full-stack:
+- Linking together a frontend framework with a backend framework (Spring Boot with React/TypeScript)
 
-create database movie;
+## Time Use
+15 hours
 
-# Login
-需要在User表写入一条记录，比如 U: botong P: 123456
-http://localhost:8080/hello ,跳转登陆页。
+## Demo
 
-# URL
-Movie Top250：http://127.0.0.1:8080/api/v1/movie/top250
-Movie Search：http://127.0.0.1:8080/api/v1/movie/search
-Movie mostpopula：http://127.0.0.1:8080/api/v1/movie/mostpopula
+## How to Use
+1. Clone the repository in your local
 
+2. Run Docker   
+```docker run -p 63306:3306 -e MYSQL_ROOT_PASSWORD=123456 --name mysql_movie -d mysql```   
+(If need to install: https://docs.docker.com/desktop/install/mac-install/)
 
+3. Login MySQL    
+```mysql -h 127.0.0.1 -P 63306 -u root -p123456```
 
+4. Create movie database   
+```create database movie;```
 
-
-
+5. Open the project and Run ```MovieSearchApplication```
