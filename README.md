@@ -20,7 +20,7 @@ The website is a movie log book for users to search and browse movie information
 ## Time Use
 15 hours
 
-## Demo
+## Video Demo
 
 ## How to Use
 1. Clone the repository in your local
