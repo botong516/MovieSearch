@@ -18,7 +18,7 @@ The website is a movie log book for users to search and browse movie information
 - Linking together a frontend framework with a backend framework (Spring Boot with React/TypeScript)
 
 ## Time Use
-15 hours
+10 hours
 
 ## Video Demo
 
