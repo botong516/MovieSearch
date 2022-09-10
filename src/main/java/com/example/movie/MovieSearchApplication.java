@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaAuditing
 public class MovieSearchApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(MovieSearchApplication.class, args);
     }
