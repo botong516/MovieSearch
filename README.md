@@ -21,6 +21,8 @@ The website is a movie log book for users to search and browse movie information
 10 hours
 
 ## Video Demo
+https://upenn.zoom.us/rec/play/fvu0usSTqeG4M_Wwj9mrwFb8mKWKPA27ulEACSZR4M-K-MJDMRxFC_1-PchLcFyA0PBct6vEpE8wUDbF.wIauww93iEq1bwtG?autoplay=true&startTime=1662787124000   
+Passcode: !y=b2LfJ
 
 ## How to Use
 1. Clone the repository in your local
