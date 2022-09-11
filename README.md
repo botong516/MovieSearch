@@ -1,5 +1,6 @@
 # MovieBook (Backend part)
-This is the back-end repository for the web application MovieBook! Website link: http://ec2-34-205-53-240.compute-1.amazonaws.com
+This is the back-end repository for the web application MovieBook!   
+Website link: http://ec2-34-205-53-240.compute-1.amazonaws.com
 
 The website is a movie log book for users to search and browse movie information, like and track the movies they've watched, and saved movies they want to watch later. Users could get access to the full and real movie library from IMDb including the TOP 250 popular movie list, movie description, director and cast imforamtion, film posters and stills, and the real rating information by millions of reviewers on IMDb! 
 
@@ -15,7 +16,8 @@ The website is a movie log book for users to search and browse movie information
 - Classes and objects
 
 ## Full-stack:
-- Linking together a frontend framework with a backend framework (Spring Boot with React/TypeScript)
+- Linking together a frontend framework with a backend framework (Spring Boot with React/TypeScript)   
+- Deploy
 
 ## Time Use
 10 hours
