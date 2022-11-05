@@ -20,7 +20,6 @@ import static com.example.movie.constant.IMDBConstant.*;
 
 @Service
 public class MovieService {
-
     @Autowired
     public RestTemplate restTemplate;
 
@@ -38,7 +37,6 @@ public class MovieService {
             topMoviesResp = response.getBody();
         return topMoviesResp;
     }
-
 
     private HashMap<String, SearchMovieResp> topMoviesRespMap = new HashMap<>();
     public SearchMovieResp Search(String keyword) {
@@ -104,6 +102,5 @@ public class MovieService {
         HttpEntity<Resource> httpEntity = new HttpEntity<>(headers);
         return httpEntity;
     }
-
 }
 

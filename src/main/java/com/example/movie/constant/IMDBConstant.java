@@ -5,9 +5,7 @@ public class IMDBConstant {
     public static final String TOP250MOVIES = "https://imdb-api.com/en/API/Top250Movies/"+ Key;;
     public static final String SEARCH = "https://imdb-api.com/en/API/SearchMovie/"+Key+"/";
     public static final String MOSTPOPULAR = "https://imdb-api.com/en/API/MostPopularMovies/"+Key;
-
     public static final String MOVIEDETAIL = "https://imdb-api.com/en/API/Title/"+Key+"/";
-
     public static final String TRAILER = "https://imdb-api.com/en/API/Trailer/"+Key+"/";
 
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/")
 public class IndexController {
 
-    @GetMapping("hello")
+    @GetMapping("hello") // 声明get接口
     public Object SayHello(){
         SysUserEntity sysUserEntity = (SysUserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "CurrentUserID:" + sysUserEntity.getId();

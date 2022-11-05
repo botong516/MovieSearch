@@ -17,9 +17,9 @@ public class AuthenticationFailure implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         response.setContentType("text/json;charset=utf-8");
-        if(e instanceof BadCredentialsException){
+        if (e instanceof BadCredentialsException) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Authentication Password incorrect");
-        }else {
+        } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Authentication Error:" + e.getMessage());
         }
     }
