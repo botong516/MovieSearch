@@ -36,7 +36,7 @@ public class UserService {
     // and go back to log in web page (Not sure how to do)
     public String Register(HttpServletResponse response, RegisterDto regiDto) {
         List<SysUserEntity> users = userRepository.findByUsername(regiDto.getUsername());
-        if (users!= null && users.size() > 0) {
+        if (users != null && users.size() > 0) {
             response.setStatus(400);
             return "username occupied";
         }

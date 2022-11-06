@@ -25,7 +25,6 @@ public class UserController {
         return userService.WantToWatch(movie);
     }
 
-
     @PostMapping("/like")
     public String Like(@RequestBody MovieReq movie, BindingResult bindingResult) {
         for (ObjectError error : bindingResult.getAllErrors()) {
